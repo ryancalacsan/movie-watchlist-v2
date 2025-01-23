@@ -1,25 +1,5 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useOutletContext } from "react-router"
-
-// export default function Search() {
-//   const [movies, setMovies] = useState([])
-//   const [movieElements, setMovieElements] = useState([])
-
-//   async function searchForMovie(formData: any) {
-//     const searchInput: string = formData.get("search-input")
-//     const res = await fetch(
-//       `${baseURL}?s=${searchInput}&type=movie&apikey=${apiKey}`
-//     )
-//     const data = await res.json()
-//     setMovies(data.Search)
-//     console.log(movies)
-//     setMovieElements(
-//       movies.map((movie) => {
-//         return <div>{movie.Title}</div>
-//       })
-//     )
-//     console.log(movieElements)
-//   }
 
 interface Movie {
   Title: string
@@ -48,7 +28,6 @@ const Search: React.FC = () => {
   const fetchMovies = async (formData) => {
     setIsLoading(true)
     setError(null)
-    setMovies([])
 
     try {
       const searchInput: string = formData.get("search-input")
@@ -117,7 +96,6 @@ const Search: React.FC = () => {
     setUserWatchList((prevWatchList) => {
       return [...prevWatchList, movieToAdd]
     })
-    console.log(userWatchList)
   }
 
   return (

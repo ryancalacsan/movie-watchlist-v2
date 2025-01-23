@@ -1,8 +1,16 @@
 import { NavLink, Outlet } from "react-router"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export default function Layout() {
-  const [userWatchList, setUserWatchList] = useState([])
+  const storedUserWatchList = localStorage.getItem("userWatchList")
+  const [userWatchList, setUserWatchList] = useState(() => {
+    const savedList = localStorage.getItem("userWatchList")
+    return savedList ? JSON.parse(savedList) : []
+  })
+
+  useEffect(() => {
+    localStorage.setItem("userWatchList", JSON.stringify(userWatchList))
+  }, [userWatchList])
 
   return (
     <div className="site-wrapper flex flex-col h-screen">
