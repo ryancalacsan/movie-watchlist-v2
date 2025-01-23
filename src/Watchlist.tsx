@@ -44,7 +44,11 @@ const Watchlist = () => {
         )}
       </div>
       {userWatchList.length > 0 && (
-        <button onClick={clearWatchList}>Clear Watchlist</button>
+        <div className="flex justify-center">
+          <button onClick={clearWatchList} className="p-2 pb-4 text-red-800">
+            ❌ Clear Watchlist
+          </button>
+        </div>
       )}
     </section>
   )

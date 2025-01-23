@@ -23,7 +23,7 @@ export default function Layout() {
         <h1 className="text-4xl text-white shadow-md bg-black p-4 rounded-lg font-limelight border-4 border-dotted border-yellow-400">
           CineList
         </h1>
-        <nav className="flex flex-col items-center gap-2">
+        <nav className="flex flex-col sm:flex-row items-center gap-2">
           <NavLink
             to="/"
             className="text-black text-sm p-1 font-limelight bg-white border-2 border-dotted border-yellow-400 rounded-md"
@@ -38,7 +38,7 @@ export default function Layout() {
           </NavLink>
         </nav>
       </header>
-      <main>
+      <main className="max-w-2xl mx-auto w-full">
         <Outlet context={[userWatchList, setUserWatchList]} />
       </main>
       <footer className="mt-auto text-center bg-black text-white p-2">

@@ -72,7 +72,7 @@ const Search: React.FC = () => {
   })
   return (
     <section className="pt-4">
-      <form action={fetchMovies} className="flex w-11/12 mx-auto gap-4">
+      <form action={fetchMovies} className="flex w-10/12 mx-auto gap-4">
         <input
           type="text"
           name="search-input"
