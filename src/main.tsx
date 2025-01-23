@@ -6,7 +6,9 @@ import Layout from "./Layout.tsx"
 import Search from "./Search.tsx"
 import Watchlist from "./Watchlist.tsx"
 
-createRoot(document.getElementById("root")!).render(
+const rootElement = document.getElementById("root")
+
+createRoot(rootElement!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
