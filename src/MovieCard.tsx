@@ -18,12 +18,14 @@ interface Movie {
 interface MovieCardProps {
   movie: Movie
   buttonText: string
+  isInWatchlist: boolean
   onButtonClick: (id: string) => void
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({
   movie,
   buttonText,
+  isInWatchlist,
   onButtonClick,
 }) => {
   return (
@@ -51,7 +53,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
           onClick={() => onButtonClick(movie.imdbID)}
           className="add-btn self-end"
         >
-          {buttonText}
+          {isInWatchlist ? "Remove from Watchlist" : "Add to Watchlist"}
         </button>
       </div>
     </div>

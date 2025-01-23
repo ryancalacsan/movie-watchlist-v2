@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useOutletContext } from "react-router"
 import { fetchMoviesData } from "./api"
 import MovieCard from "./MovieCard"
+import { FaFilm } from "react-icons/fa"
 
 interface Movie {
   Title: string
@@ -39,22 +40,36 @@ const Search: React.FC = () => {
     }
   }
 
-  const addToWatchList = (id: string) => {
-    const movieToAdd = movies.find((movie) => movie.imdbID === id)
-    if (movieToAdd) {
-      setUserWatchList((prevWatchList) => [...prevWatchList, movieToAdd])
+  const toggleWatchList = (id: string) => {
+    const movieToToggle = movies.find((movie) => movie.imdbID === id)
+    if (!movieToToggle) return
+
+    const isAlreadyInWatchlist = userWatchList.some(
+      (movie) => movie.imdbID === id
+    )
+
+    if (isAlreadyInWatchlist) {
+      setUserWatchList((prevWatchList) =>
+        prevWatchList.filter((movie) => movie.imdbID !== id)
+      )
+    } else {
+      setUserWatchList((prevWatchList) => [...prevWatchList, movieToToggle])
     }
   }
 
-  const movieComponents = movies.map((movie) => (
-    <MovieCard
-      key={movie.imdbID}
-      movie={movie}
-      buttonText="Add to Watchlist"
-      onButtonClick={addToWatchList}
-    />
-  ))
-
+  const movieComponents = movies.map((movie) => {
+    const isInWatchlist = userWatchList.some(
+      (movieInList) => movieInList.imdbID === movie.imdbID
+    )
+    return (
+      <MovieCard
+        key={movie.imdbID}
+        movie={movie}
+        isInWatchlist={isInWatchlist}
+        onButtonClick={toggleWatchList}
+      />
+    )
+  })
   return (
     <section className="pt-4">
       <form action={fetchMovies} className="flex w-11/12 mx-auto gap-4">
@@ -62,7 +77,7 @@ const Search: React.FC = () => {
           type="text"
           name="search-input"
           id="search-input"
-          placeholder="Search for a movie..."
+          placeholder="eg. batman"
           className="border border-slate-600 shadow rounded-md flex-1 p-1"
         />
         <button type="submit">Search</button>
@@ -71,7 +86,16 @@ const Search: React.FC = () => {
         <div id="search-placeholder">
           {isLoading && <p>Loading...</p>}
           {error && <p style={{ color: "red" }}>Error: {error}</p>}
-          {movies.length > 0 ? movieComponents : <p>Start exploring...</p>}
+          {movies.length > 0 ? (
+            movieComponents
+          ) : (
+            <>
+              <h2 className="text-xl text-center p-8">Search for a movie 👆🏼</h2>
+              <div className="flex justify-center p-2 text-7xl">
+                <FaFilm />
+              </div>
+            </>
+          )}
         </div>
       </section>
     </section>
