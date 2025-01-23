@@ -19,20 +19,30 @@ export default function Layout() {
 
   return (
     <div className="site-wrapper flex flex-col h-screen">
-      <header className="p-8 flex items-center justify-between bg-header-image bg-cover">
-        <h1 className="text-4xl text-white shadow-md bg-black p-4 rounded-lg font-limelight border-4 border-dotted border-yellow-400">
+      <header
+        className="p-8 flex items-center justify-between bg-header-image bg-cover"
+        role="banner"
+      >
+        <h1
+          className="text-4xl text-white shadow-md bg-black p-4 rounded-lg font-limelight border-4 border-dotted border-yellow-400"
+          aria-label="CineList"
+        >
           CineList
         </h1>
         <nav className="flex flex-col sm:flex-row items-center gap-2">
           <NavLink
             to="/"
             className="text-black text-sm p-1 font-limelight bg-white border-2 border-dotted border-yellow-400 rounded-md"
+            role="link"
+            aria-label="Search movies"
           >
             Search
           </NavLink>
           <NavLink
             to="/watchlist"
             className="text-black text-sm p-1 font-limelight bg-white border-2 border-dotted border-yellow-400 rounded-md"
+            role="link"
+            aria-label="My Watchlist"
           >
             My Watchlist
           </NavLink>

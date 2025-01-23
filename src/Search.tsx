@@ -73,18 +73,29 @@ const Search: React.FC = () => {
   return (
     <section className="pt-4">
       <form action={fetchMovies} className="flex w-10/12 mx-auto gap-4">
+        <label htmlFor="search-input" className="sr-only">
+          Search for a movie
+        </label>
         <input
           type="text"
           name="search-input"
           id="search-input"
           placeholder="eg. batman"
           className="border border-slate-600 shadow rounded-md flex-1 p-1"
+          aria-label="Movie search input"
+          required
         />
-        <button type="submit">Search</button>
+        <button type="submit" id="search-btn" aria-label="Search for movies">
+          Search
+        </button>
       </form>
       <section id="movies-container">
         <div id="search-placeholder">
-          {isLoading && <p>Loading...</p>}
+          {isLoading && (
+            <p role="status" aria-live="polite">
+              Loading...
+            </p>
+          )}
           {error && <p style={{ color: "red" }}>Error: {error}</p>}
           {movies.length > 0 ? (
             movieComponents

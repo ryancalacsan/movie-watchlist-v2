@@ -28,8 +28,10 @@ const Watchlist = () => {
 
   return (
     <section className="pt-4">
-      <h2 className="text-2xl font-bold text-center mb-4">My Watchlist</h2>
-      <div id="watchlist-container">
+      <h2 aria-live="polite" className="text-2xl font-bold text-center mb-4">
+        My Watchlist
+      </h2>
+      <div id="watchlist-container" role="list">
         {userWatchList.length === 0 ? (
           <>
             <p className="text-center">
