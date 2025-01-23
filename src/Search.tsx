@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { useOutletContext } from "react-router"
 
 // export default function Search() {
 //   const [movies, setMovies] = useState([])
@@ -40,6 +41,10 @@ const Search: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
 
+  const [userWatchList, setUserWatchList] = useOutletContext()
+
+  // fetch searched movies
+
   const fetchMovies = async (formData) => {
     setIsLoading(true)
     setError(null)
@@ -60,7 +65,6 @@ const Search: React.FC = () => {
           `http://www.omdbapi.com/?i=${movie.imdbID}&apikey=${apiKey}`
         )
         const data = await res.json()
-        console.log(data)
         setMovies((prevMovies) => {
           return [...prevMovies, data]
         })
@@ -71,6 +75,8 @@ const Search: React.FC = () => {
       setIsLoading(false)
     }
   }
+
+  // map over api data to display movies
 
   const movieComponents = movies.map((movie) => (
     <div
@@ -92,12 +98,27 @@ const Search: React.FC = () => {
         </div>
         <p>imdb Rating {movie.imdbRating}</p>
         <p className="line-clamp-4">{movie.Plot}</p>
-        <button className="add-btn self-end" movie-id="${movie.imdbID}">
+        <button
+          onClick={() => {
+            addToWachList(movie.imdbID)
+          }}
+          className="add-btn self-end"
+          data-id="${movie.imdbID}"
+        >
           Add to Watchlist
         </button>
       </div>
     </div>
   ))
+
+  // add movie to userWatchList
+  const addToWachList = (id) => {
+    const movieToAdd = movies.find((movie) => movie.imdbID === id)
+    setUserWatchList((prevWatchList) => {
+      return [...prevWatchList, movieToAdd]
+    })
+    console.log(userWatchList)
+  }
 
   return (
     <>
