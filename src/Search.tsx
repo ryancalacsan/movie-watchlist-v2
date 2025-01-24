@@ -45,21 +45,21 @@ const Search: React.FC = () => {
     if (!movieToToggle) return
 
     const isAlreadyInWatchlist = userWatchList.some(
-      (movie) => movie.imdbID === id
+      (movie: Movie) => movie.imdbID === id
     )
 
     if (isAlreadyInWatchlist) {
-      setUserWatchList((prevWatchList) =>
-        prevWatchList.filter((movie) => movie.imdbID !== id)
+      setUserWatchList((prevWatchList: []) =>
+        prevWatchList.filter((movie: Movie) => movie.imdbID !== id)
       )
     } else {
-      setUserWatchList((prevWatchList) => [...prevWatchList, movieToToggle])
+      setUserWatchList((prevWatchList: []) => [...prevWatchList, movieToToggle])
     }
   }
 
   const movieComponents = movies.map((movie) => {
     const isInWatchlist = userWatchList.some(
-      (movieInList) => movieInList.imdbID === movie.imdbID
+      (movieInList: Movie) => movieInList.imdbID === movie.imdbID
     )
     return (
       <MovieCard
@@ -106,7 +106,7 @@ const Search: React.FC = () => {
             movieComponents
           ) : (
             <>
-              <h2 className="text-xl text-center p-8">Search for a movie 👆🏼</h2>
+              <h2 className="text-xl text-center p-8">Search for a movie</h2>
               <div className="flex justify-center p-2 text-7xl">
                 <FaFilm />
               </div>

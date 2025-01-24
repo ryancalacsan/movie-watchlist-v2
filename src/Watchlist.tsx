@@ -2,6 +2,21 @@ import { useOutletContext } from "react-router"
 import MovieCard from "./MovieCard"
 import { FaFilm } from "react-icons/fa"
 
+interface Movie {
+  Title: string
+  Year: string
+  imdbID: string
+  Type: string
+  Poster: string
+  Runtime: string
+  Genre: string
+  imdbRating: string
+  Country: string
+  Director: string
+  Actors: string
+  Plot: string
+}
+
 const Watchlist = () => {
   const [userWatchList, setUserWatchList] = useOutletContext()
 
@@ -14,7 +29,7 @@ const Watchlist = () => {
     setUserWatchList([])
   }
 
-  const userMovieComponents = userWatchList.map((movie) => {
+  const userMovieComponents = userWatchList.map((movie: Movie) => {
     return (
       <MovieCard
         key={movie.imdbID}
@@ -35,7 +50,7 @@ const Watchlist = () => {
         {userWatchList.length === 0 ? (
           <>
             <p className="text-center">
-              Your watchlist is empty 😢 Start adding movies!
+              Your watchlist is empty... Start adding movies!
             </p>
             <div className="flex justify-center p-2 text-7xl">
               <FaFilm />
