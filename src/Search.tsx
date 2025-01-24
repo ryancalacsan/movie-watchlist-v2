@@ -72,7 +72,7 @@ const Search: React.FC = () => {
   })
   return (
     <section className="pt-4">
-      <form action={fetchMovies} className="flex w-10/12 mx-auto gap-4">
+      <form action={fetchMovies} className="flex w-10/12 mx-auto gap-2">
         <label htmlFor="search-input" className="sr-only">
           Search for a movie
         </label>
@@ -85,7 +85,12 @@ const Search: React.FC = () => {
           aria-label="Movie search input"
           required
         />
-        <button type="submit" id="search-btn" aria-label="Search for movies">
+        <button
+          type="submit"
+          id="search-btn"
+          aria-label="Search for movies"
+          className="bg-white px-2 py-1 border-2  border-yellow-400 rounded-md"
+        >
           Search
         </button>
       </form>

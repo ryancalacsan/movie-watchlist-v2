@@ -31,7 +31,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
   return (
     <article
       key={movie.imdbID}
-      className="movie-container flex border-2 p-4 m-4 border-slate-700 shadow rounded-md"
+      className="movie-container flex border-2 p-4 m-4 border-slate-700 rounded-md transition-transform transform hover:scale-105 hover:translate-y-[-4px] hover:shadow-lg"
       aria-labelledby={`movie-title-${movie.imdbID}`}
       aria-describedby={`movie-description-${movie.imdbID}`}
     >
@@ -72,7 +72,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
               : `Add ${movie.Title} to Watchlist`
           }
         >
-          {isInWatchlist ? "Remove from Watchlist" : "Add to Watchlist"}
+          {isInWatchlist ? "Remove from Watchlist ❌" : "Add to Watchlist ✅"}
         </button>
       </div>
     </article>
