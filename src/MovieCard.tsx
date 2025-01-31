@@ -29,7 +29,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
   return (
     <article
       key={movie.imdbID}
-      className="movie-container flex flex-col sm:flex-row border-2 p-4 m-4 border-slate-700 rounded-md transition-transform transform hover:scale-105 hover:translate-y-[-4px] hover:shadow-lg overflow-hidden w-full"
+      className="movie-container flex flex-col sm:flex-row border-2 p-4 border-slate-700 rounded-md transition-transform transform hover:scale-105 hover:translate-y-[-4px] hover:shadow-lg overflow-hidden w-full"
       aria-labelledby={`movie-title-${movie.imdbID}`}
       aria-describedby={`movie-description-${movie.imdbID}`}
     >
@@ -63,7 +63,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
         {/* Button */}
         <button
           onClick={() => onButtonClick(movie.imdbID)}
-          className="add-btn self-end sm:self-start mt-4 sm:mt-0 bg-blue-500 text-white rounded-md px-4 py-2"
+          className="add-btn self-end sm:self-start mt-4 sm:mt-0 bg-black text-white rounded-md px-4 py-2 border-4 border-dotted border-yellow-400"
           aria-label={
             isInWatchlist
               ? `Remove ${movie.Title} from Watchlist`

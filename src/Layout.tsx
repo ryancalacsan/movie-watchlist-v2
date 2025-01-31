@@ -24,7 +24,7 @@ export default function Layout() {
   return (
     <div className="site-wrapper flex flex-col h-screen">
       <header
-        className="p-8 flex items-center justify-between lg:justify-start sm:px-8 bg-header-image bg-cover"
+        className="p-8 flex items-center justify-between lg:justify-start sm:px-8 bg-header-image bg-cover mb-2"
         role="banner"
       >
         <h1
