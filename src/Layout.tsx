@@ -19,7 +19,7 @@ const useUserWatchList = () => {
 export default function Layout() {
   const [userWatchList, setUserWatchList] = useUserWatchList()
   const navButtonStyle =
-    "text-black text-sm p-1 font-limelight bg-white border-2 border-dotted border-yellow-400 rounded-md"
+    "text-black text-sm p-1 font-limelight bg-white border-2 border-dotted border-yellow-400 rounded-md hover:bg-yellow-400"
 
   return (
     <div className="site-wrapper flex flex-col h-screen">

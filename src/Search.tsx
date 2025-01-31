@@ -160,7 +160,7 @@ const Search: React.FC = () => {
             type="submit"
             id="search-btn"
             aria-label="Search for movies"
-            className="bg-white px-4 py-2 border-2 border-yellow-400 rounded-md text-sm hover:bg-yellow-400 transition-all duration-200"
+            className="bg-white px-4 py-2 border-2 border-yellow-400 rounded-md text-sm hover:bg-yellow-400 transition-all duration-200 ml-2"
           >
             Search
           </button>
