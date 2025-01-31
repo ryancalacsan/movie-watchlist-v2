@@ -1,5 +1,7 @@
 import { NavLink, Outlet } from "react-router"
 import { useState, useEffect } from "react"
+import { FaGithub, FaCode, FaLaptop } from "react-icons/fa"
+import { CgWebsite } from "react-icons/cg"
 
 const useUserWatchList = () => {
   const [userWatchList, setUserWatchList] = useState(() => {
@@ -51,18 +53,41 @@ export default function Layout() {
           </NavLink>
         </nav>
       </header>
-
-      {/* Main content area with max width applied */}
       <main className="flex-grow bg-gray-100 px-4 sm:px-8">
         <div className="max-w-screen-xl mx-auto">
           {" "}
-          {/* Max-width container */}
           <Outlet context={[userWatchList, setUserWatchList]} />
         </div>
       </main>
 
-      <footer className="mt-auto text-center bg-black text-white p-2">
-        coded by Ryan Calacsan
+      <footer className="mt-auto text-center bg-black text-white p-4 flex flex-col sm:flex-row items-center justify-between">
+        <div className="flex items-center gap-2">
+          <FaLaptop className="text-lg" />
+          <p className="mb-4 sm:mb-0">Coded by Ryan Calacsan</p>
+        </div>
+        <div className="site-icons text-xl flex space-x-4 sm:space-x-6">
+          <a
+            href="https://github.com/ryancalacsan/movie-watchlist-v2"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaCode />
+          </a>
+          <a
+            href="https://github.com/ryancalacsan/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaGithub />
+          </a>
+          <a
+            href="https://ryancalacsan.github.io/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <CgWebsite />
+          </a>
+        </div>
       </footer>
     </div>
   )

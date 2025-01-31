@@ -116,8 +116,10 @@ const Search: React.FC = () => {
             <div className="space-y-6">{movieComponents}</div>
           ) : (
             <>
-              <h2 className="text-xl text-center p-8">Search for a movie</h2>
-              <div className="flex justify-center p-2 text-7xl text-gray-500">
+              <h2 className="text-xl text-center p-8 font-limelight">
+                Search for a movie
+              </h2>
+              <div className="flex justify-center p-2 text-7xl text-black">
                 <FaFilm />
               </div>
             </>
