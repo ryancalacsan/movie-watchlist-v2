@@ -71,21 +71,21 @@ export default function Layout() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaCode />
+            <FaCode aria-label="Github Repo" />
           </a>
           <a
             href="https://github.com/ryancalacsan/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaGithub />
+            <FaGithub aria-label="Github profile" />
           </a>
           <a
             href="https://ryancalacsan.github.io/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <CgWebsite />
+            <CgWebsite aria-label="ryan calacsan's website" />
           </a>
         </div>
       </footer>

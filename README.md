@@ -1,50 +1,68 @@
-# React + TypeScript + Vite
+# 🎬 CineList
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple movie watchlist app that lets users search for movies via the OMDB API and save them to a watchlist. The watchlist persists between sessions using local storage.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[CineList on Netlify](https://cinelist-dev.netlify.app)
 
-## Expanding the ESLint configuration
+## 🛠️ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- 🔎 **Search Movies** – Fetch movies from the OMDB API based on user input.
+- 🎞 **Movie Cards** – Display movie results in a clean, responsive layout.
+- 📌 **Watchlist** – Save favorite movies to a separate watchlist.
+- 🔄 **Persistent Storage** – Watchlist is saved in **local storage** to persist between refreshes.
+- 🛣 **Navigation** – Use **React Router** to switch between search and watchlist views.
+- 🎨 **Modern UI** – Styled with **Tailwind CSS** for a sleek design.
 
-- Configure the top-level `parserOptions` property like this:
+## 🏗️ Tech Stack
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **React** + **Vite** – Fast and efficient development.
+- **Tailwind CSS** – Utility-first styling.
+- **React Router** – Client-side navigation.
+- **OMDB API** – Fetch movie data.
+- **Local Storage** – Persist watchlist between sessions.
+- **Netlify** – Live deployment.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 📥 Installation & Setup
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/cinelist.git
+   cd cinelist
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+3. **Get an OMDB API Key:**  
+   Sign up at [OMDB API](https://www.omdbapi.com/) and get an API key.
+4. **Create a `.env` file in the root directory and add:**
+   ```
+   VITE_OMDB_API_KEY=your_api_key_here
+   ```
+5. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+6. **Visit:**  
+   Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## 📌 Future Improvements
+
+- ✅ Implement user authentication (e.g., Firebase Auth).
+- ⭐ Allow users to rate or review movies.
+- 🎭 Add movie details with trailers and additional info.
+- 🌙 Dark mode toggle.
+
+## 🤝 Contributing
+
+Pull requests are welcome! If you'd like to improve the project, feel free to fork it and submit a PR.
+
+## 📜 License
+
+This project is licensed under the **GNU GENERAL PUBLIC LICENSE 3.0**. See the [LICENSE](https://www.gnu.org/licenses/gpl-3.0.en.html) file for details.
+
+---
+
+Happy watching! 🍿
