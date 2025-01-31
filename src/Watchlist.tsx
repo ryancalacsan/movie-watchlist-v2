@@ -18,7 +18,8 @@ interface Movie {
 }
 
 const Watchlist = () => {
-  const [userWatchList, setUserWatchList] = useOutletContext()
+  const [userWatchList, setUserWatchList] =
+    useOutletContext<[Movie[], React.Dispatch<React.SetStateAction<Movie[]>>]>()
 
   const removeFromWatchlist = (id: string) => {
     const newList = userWatchList.filter((movie) => movie.imdbID !== id)
@@ -34,7 +35,6 @@ const Watchlist = () => {
       <MovieCard
         key={movie.imdbID}
         movie={movie}
-        buttonText="Remove from Watchlist"
         isInWatchlist={true}
         onButtonClick={removeFromWatchlist}
       />
@@ -42,17 +42,17 @@ const Watchlist = () => {
   })
 
   return (
-    <section className="pt-4">
-      <h2 aria-live="polite" className="text-2xl font-bold text-center mb-4">
+    <section className="pt-4 pb-8 px-4 sm:px-8 bg-gray-100">
+      <h2 aria-live="polite" className="text-2xl font-bold text-center mb-6">
         My Watchlist
       </h2>
-      <div id="watchlist-container" role="list">
+      <div id="watchlist-container" className="space-y-6">
         {userWatchList.length === 0 ? (
           <>
-            <p className="text-center">
+            <p className="text-center text-lg">
               Your watchlist is empty... Start adding movies!
             </p>
-            <div className="flex justify-center p-2 text-7xl">
+            <div className="flex justify-center p-2 text-7xl text-gray-500">
               <FaFilm />
             </div>
           </>
@@ -60,11 +60,13 @@ const Watchlist = () => {
           userMovieComponents
         )}
       </div>
+
+      {/* Clear Watchlist Button */}
       {userWatchList.length > 0 && (
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-6">
           <button
             onClick={clearWatchList}
-            className="p-2 text-red-800"
+            className="p-2 text-red-800 bg-white border-2 border-red-800 rounded-md"
             aria-label="Clear Watchlist"
             id="clear-btn"
           >

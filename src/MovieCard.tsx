@@ -29,18 +29,21 @@ const MovieCard: React.FC<MovieCardProps> = ({
   return (
     <article
       key={movie.imdbID}
-      className="movie-container flex border-2 p-4 m-4 border-slate-700 rounded-md transition-transform transform hover:scale-105 hover:translate-y-[-4px] hover:shadow-lg"
+      className="movie-container flex flex-col sm:flex-row border-2 p-4 m-4 border-slate-700 rounded-md transition-transform transform hover:scale-105 hover:translate-y-[-4px] hover:shadow-lg overflow-hidden w-full"
       aria-labelledby={`movie-title-${movie.imdbID}`}
       aria-describedby={`movie-description-${movie.imdbID}`}
     >
+      {/* Image Section */}
       <img
         src={movie.Poster}
         alt={`Poster for ${movie.Title}`}
-        className="movie-thumbnail h-60 my-auto max-w-40"
+        className="movie-thumbnail w-full sm:w-48 md:w-56 h-auto object-cover rounded-md mb-4 sm:mb-0 sm:mr-4"
         role="img"
         aria-hidden="false"
       />
-      <div className="movie-info p-4 flex flex-col gap-2">
+
+      {/* Info Section */}
+      <div className="movie-info flex flex-col justify-between p-4 sm:ml-4 w-full">
         <h2
           className="movie-title text-xl font-bold line-clamp-2"
           id={`movie-title-${movie.imdbID}`}
@@ -52,14 +55,16 @@ const MovieCard: React.FC<MovieCardProps> = ({
           <p>{movie.Runtime}</p>
           <p>{movie.Genre}</p>
         </div>
-        <p>imdb Rating {movie.imdbRating}</p>
+        <p>IMDb Rating: {movie.imdbRating}</p>
         <p id={`movie-description-${movie.imdbID}`} className="line-clamp-4">
           {movie.Plot}
         </p>
+
+        {/* Button */}
         <button
           onClick={() => onButtonClick(movie.imdbID)}
-          className="add-btn self-end"
-          ria-label={
+          className="add-btn self-end sm:self-start mt-4 sm:mt-0 bg-blue-500 text-white rounded-md px-4 py-2"
+          aria-label={
             isInWatchlist
               ? `Remove ${movie.Title} from Watchlist`
               : `Add ${movie.Title} to Watchlist`
